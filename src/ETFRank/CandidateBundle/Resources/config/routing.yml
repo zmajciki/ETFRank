@@ -1,0 +1,3 @@
+etf_rank_candidate:
+    resource: "@ETFRankCandidateBundle/Controller"
+    type:     annotation

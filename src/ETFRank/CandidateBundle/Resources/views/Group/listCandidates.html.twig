@@ -1,0 +1,57 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}{{ pageName }}{% endblock %}
+
+{% block content %}
+    <div>Count: {{ pagination.count }}</div>
+    <div class="text-right">
+        <a href="{{ path('manual_entry_create', {'group': group.id}) }}" class="btn btn-success">Add new candidate</a>
+        <a href="{{ path('crawler_run', {'group': group.id}) }}" class="btn btn-success">Run crawler</a>
+        <a href="{{ path('import_csv_run', {'group': group.id}) }}" class="btn btn-success">Import CSV</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>HS Score</th>
+            <th>Awards</th>
+            <th>FoS</th>
+            <th>EE Mathematics</th>
+            <th>EE Physics</th>
+            <th>ER Score</th>
+            <th>SI Score</th>
+            <th></th>
+        </tr>
+
+        {% for candidate in pagination %}
+            <tr>
+                <td>{{ candidate.personalId }}</td>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.highSchoolScore }}</td>
+                <td>{{ candidate.awards }}</td>
+                <td>{{ candidate.humanReadableChosenFieldOfStudy }}</td>
+                <td>{{ candidate.entranceExamMathematics }}</td>
+                <td>{{ candidate.entranceExamPhysics }}</td>
+                <td>{{ candidate.ERScore|number_format(2) }}</td>
+                <td>{{ candidate.SIScore|number_format(2) }}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        {% if not candidate.confirmed %}
+                            <a href="{{ path('manual_entry_confirm', {'candidate': candidate.id}) }}" class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </a>
+                        {% endif %}
+                        <a href="{{ path('manual_entry_update', {'candidate': candidate.id}) }}" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="{{ path('manual_entry_remove', {'candidate': candidate.id}) }}" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

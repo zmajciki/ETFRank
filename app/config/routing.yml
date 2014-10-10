@@ -1,0 +1,4 @@
+etf_rank_candidate:
+    resource: "@ETFRankCandidateBundle/Resources/config/routing.yml"
+    prefix:   /
+

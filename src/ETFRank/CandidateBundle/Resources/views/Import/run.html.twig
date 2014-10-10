@@ -1,0 +1,22 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}Import CSV{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+    <p>Select CSV file for import. File must contain following fields:</p>
+    <ul>
+        <li><code>personal_id</code> - string</li>
+        <li><code>name</code> - string</li>
+        <li><code>parent_name</code> - string</li>
+        <li><code>high_school</code> - string</li>
+        <li><code>high_school_score</code> - string representing decimal number (ex. "22.45")</li>
+        <li><code>award_mathematics</code> - 0 or 1</li>
+        <li><code>award_physics</code> - 0 or 1</li>
+        <li><code>award_informatics</code> - 0 or 1</li>
+        <li><code>chosen_field_of_study</code> - "ER" or "SI"</li>
+        <li><code>entrance_exam_mathematics</code> - string representing decimal number (ex. "22.45")</li>
+        <li><code>entrance_exam_physics</code> - string representing decimal number (ex. "22.45")</li>
+    </ul>
+    {{ form_end(form) }}
+{% endblock %}

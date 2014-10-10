@@ -1,0 +1,9 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}Run crawler{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+        <p>Do you want to run crawler to fetch candidates?</p>
+    {{ form_end(form) }}
+{% endblock %}

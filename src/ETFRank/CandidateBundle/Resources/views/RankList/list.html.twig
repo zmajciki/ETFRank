@@ -1,0 +1,33 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}{{ pageName }}{% endblock %}
+
+{% block content %}
+    <div class="text-right">
+        <a href="{{ path('rank_list_create', {'group': group.id}) }}" class="btn btn-success">Create new rank list</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Rank list</th>
+            <th></th>
+        </tr>
+
+        {% for list in pagination %}
+            <tr>
+                <td>{{ list.name }}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a href="{{ path('rank_list_view', {'rankList': list.id}) }}" class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a href="{{ path('rank_list_remove', {'rankList': list.id}) }}" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

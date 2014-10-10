@@ -1,0 +1,29 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}{{ pageName }}{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>Rank</th>
+            <td>Id</td>
+            <th>Name</th>
+            <th>FoS</th>
+            <th>ER Score</th>
+            <th>SI Score</th>
+        </tr>
+
+        {% for candidate in pagination %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ candidate.personalId }}</td>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.humanReadableChosenFieldOfStudy }}</td>
+                <td>{{ candidate.ERScore|number_format(2) }}</td>
+                <td>{{ candidate.SIScore|number_format(2) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

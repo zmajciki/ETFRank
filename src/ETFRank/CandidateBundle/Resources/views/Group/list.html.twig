@@ -1,0 +1,30 @@
+<table class="table">
+    {% for group in entities %}
+    <tr>
+        <td>
+            <a href="{{ path('group_view', {'group': group.id}) }}">
+                {{ group.name }}
+            </a>
+        </td>
+        <td class="text-right" style="padding-right:0">
+            <div class="btn-group">
+                <a href="{{ path('group_update', {'group': group.id}) }}" class="btn btn-warning btn-sm" title="Edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a href="{{ path('group_remove', {'group': group.id}) }}" class="btn btn-danger btn-sm" title="Remove">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+
+            <div class="btn-group">
+                <a href="{{ path('rank_list_list', {'group': group.id}) }}" class="btn btn-default btn-sm" title="Rank lists">
+                    <span class="glyphicon glyphicon-list"></span>
+                </a>
+                <a href="{{ path('simulation_run', {'group': group.id}) }}" class="btn btn-default btn-sm" title="Simulations">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                </a>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

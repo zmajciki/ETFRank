@@ -1,0 +1,9 @@
+{% extends 'ETFRankCandidateBundle::layout.html.twig' %}
+
+{% block page_header %}{{ pageName }}{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+        <p>{{ confirmText }}</p>
+    {{ form_end(form) }}
+{% endblock %}
